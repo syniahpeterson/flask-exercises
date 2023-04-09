@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<a href="http://127.0.0.1:5000">Registered Students</a>
+<br>
+<a href="http://127.0.0.1:5000/register">Register</a>
+<h1>Register</h1>
+<p>Use the following form to register for a student organization.</p>
+
+{%- for category, message in get_flashed_messages(with_categories=True) %}
+    <div class= "alert alert-danger">
+        {{ message }}
+    </div>
+{%- endfor %}
+
+<form action="{{ request.path }}" method = 'POST'>
+    <p>Name</p>
+        <input type="text" name="name" id="name">
+        <p>Organization</p>
+        <select name="organization" id="organization">
+            <option value=""></option>
+            <option value="SGA">Student Government Organization</option>
+            <option value="Nursing">Nursing Club</option>
+            <option value="STEM">Elite STEM Club</option>
+            <option value="Debate">Debate Club</option>
+            <option value="Sports">Sports Club</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Register">
+</form>
+{% endblock %}

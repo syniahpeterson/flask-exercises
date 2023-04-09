@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+{%- for message in get_flashed_messages() %}
+    {{ message }}
+{%- endfor %}
+<a href="http://127.0.0.1:5000">Registered Students</a>
+<br>
+<a href="http://127.0.0.1:5000/register">Register</a>
+<h1>Registered Students</h1>
+<p>The following students have registered for student organizations.</p>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Organization</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for student in registration %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.organization }}</td>
+            </tr>
+            {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
